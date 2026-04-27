@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПДД РК — Полный гайд к экзамену 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c10;
+    --card: #16161e;
+    --card-hover: #1e1e2a;
+    --accent: #f0c040;
+    --red: #ff6b6b;
+    --teal: #4ecdc4;
+    --purple: #a78bfa;
+    --pink: #f472b6;
+    --blue: #60a5fa;
+    --green: #34d399;
+    --orange: #fb923c;
+    --text: #e8e8ed;
+    --text-dim: #7a7a92;
+    --border: #262638;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.65;
+    padding: 14px;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header { text-align: center; padding: 20px 10px 8px; }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 800;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .header h1 {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: clamp(1.3rem, 5vw, 2.1rem);
+    background: linear-gradient(135deg, var(--accent), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
+
+  .header p { color: var(--text-dim); font-size: 0.85rem; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 5px;
+    padding: 12px 0 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 7px 12px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .tab:hover { background: var(--card-hover); color: var(--text); }
+  .tab.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+  /* SECTIONS */
+  .sections { max-width: 720px; margin: 0 auto; }
+  .section { display: none; animation: fadeUp 0.3s ease; }
+  .section.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.15s;
+  }
+  .card:hover { background: var(--card-hover); border-color: #3a3a50; }
+
+  .card h3 {
+    font-size: 0.92rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card p, .card li { font-size: 0.86rem; line-height: 1.7; }
+  .card ul { padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+
+  /* CARD ROW (for number cards) */
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .card-label { flex: 1; font-size: 0.88rem; font-weight: 500; }
+
+  .card-value {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 1.05rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* COLORS */
+  .v-yellow, .hl { color: var(--accent); font-weight: 700; }
+  .v-red, .hl-red { color: var(--red); font-weight: 700; }
+  .v-teal { color: var(--teal); }
+  .v-purple { color: var(--purple); }
+  .v-pink { color: var(--pink); }
+  .hl-green { color: var(--green); font-weight: 700; }
+  .hl-blue { color: var(--blue); font-weight: 700; }
+
+  /* SUB HEADING */
+  .sub-heading {
+    font-weight: 800;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin: 20px 0 10px;
+  }
+
+  /* TIPS */
+  .tip {
+    border-left: 3px solid var(--accent);
+    background: rgba(240,192,64,0.06);
+    padding: 12px 14px;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    margin: 14px 0;
+    line-height: 1.6;
+  }
+  .tip strong { color: var(--accent); }
+
+  .tip-green { border-left-color: var(--green); background: rgba(52,211,153,0.06); }
+  .tip-green strong { color: var(--green); }
+  .tip-red { border-left-color: var(--red); background: rgba(248,113,113,0.06); }
+  .tip-red strong { color: var(--red); }
+
+  /* TABLE */
+  .vs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.83rem;
+  }
+  .vs-table th {
+    text-align: left;
+    padding: 8px 10px;
+    background: var(--card-hover);
+    border-bottom: 2px solid var(--border);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+  }
+  .vs-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  /* SIGN GRID */
+  .sign-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .sign-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+  }
+  .sign-icon { font-size: 2.2rem; margin-bottom: 4px; display: block; }
+  .sign-card h4 { font-size: 0.8rem; font-weight: 800; margin-bottom: 4px; }
+  .sign-card p { font-size: 0.73rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* NUMBER CIRCLE */
+  .num {
+    display: inline-flex;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 800;
+    font-size: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rule-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .rule-text { flex: 1; font-size: 0.86rem; }
+
+  .footer {
+    text-align: center;
+    padding: 28px 10px;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 500px) {
+    .card { padding: 12px 14px; }
+    .card-value { font-size: 0.92rem; }
+    .card-label { font-size: 0.82rem; }
+    .sign-grid { grid-template-columns: 1fr; }
+    .vs-table { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">Категория B — 2026</div>
+  <h1>🚗 ПДД РК: Полный гайд</h1>
+  <p>Цифры, лайфхаки, медицина, знаки — всё в одном месте</p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="speed">⚡ Скорость</button>
+  <button class="tab" data-tab="stop">🅿️ Остановка</button>
+  <button class="tab" data-tab="fines">💰 Штрафы</button>
+  <button class="tab" data-tab="tow">🔗 Буксировка</button>
+  <button class="tab" data-tab="other">📋 Разное</button>
+  <button class="tab" data-tab="tips">💡 Лайфхаки</button>
+  <button class="tab" data-tab="med">🩺 Медицина</button>
+  <button class="tab" data-tab="signs">🚧 Знаки</button>
+</div>
+
+<div class="sections">
+
+<!-- ═══════════════ СКОРОСТЬ ═══════════════ -->
+<div class="section active" id="speed">
+  <div class="section-title">⚡ Скоростной режим</div>
+
+  <div class="sub-heading">В населённом пункте</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Все ТС — общее ограничение</span>
+    <span class="card-value v-yellow">60 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Макс. при наличии знаков (спецрежим)</span>
+    <span class="card-value v-yellow">90 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Жилая зона / дворовая территория</span>
+    <span class="card-value v-red">20 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Грузовые авто в населённом пункте</span>
+    <span class="card-value v-red">50 км/ч</span>
+  </div></div>
+
+  <div class="sub-heading">Вне населённого пункта — легковые и мото</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Автомагистраль (макс. со знаком)</span>
+    <span class="card-value v-teal">140 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Дорога с разделительной полосой</span>
+    <span class="card-value v-teal">110 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Остальные дороги</span>
+    <span class="card-value v-teal">100 км/ч</span>
+  </div></div>
+
+  <div class="sub-heading">Грузовые ≤ 3.5 т, автобусы междугородние</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Автомагистраль</span>
+    <span class="card-value v-purple">110 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">С разделительной полосой</span>
+    <span class="card-value v-purple">100 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Остальные дороги</span>
+    <span class="card-value v-purple">90 км/ч</span>
+  </div></div>
+
+  <div class="sub-heading">Автобусы, грузовые > 3.5 т, с прицепом</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Автомагистраль</span>
+    <span class="card-value v-pink">90 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">С разделительной полосой</span>
+    <span class="card-value v-pink">80 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Остальные дороги</span>
+    <span class="card-value v-pink">70 км/ч</span>
+  </div></div>
+
+  <div class="sub-heading">Автомагистраль — минимум</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Нельзя ехать медленнее</span>
+    <span class="card-value v-red">40 км/ч</span>
+  </div></div>
+
+  <div class="tip">
+    <strong>Как запомнить:</strong> В городе = 60. Двор = 20. Магистраль = 140 макс / 40 мин. Каждая «ступень» ТС снижает на 10-20 км/ч. Грузовые в городе = 50.
+  </div>
+</div>
+
+<!-- ═══════════════ ОСТАНОВКА ═══════════════ -->
+<div class="section" id="stop">
+  <div class="section-title">🅿️ Остановка и стоянка</div>
+
+  <div class="sub-heading">Запрет остановки — расстояния</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">До пешеходного перехода</span>
+    <span class="card-value v-yellow">5 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">До перекрёстка (от края пересечения)</span>
+    <span class="card-value v-yellow">30 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">До остановки маршрутного ТС</span>
+    <span class="card-value v-yellow">15 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Зазор до сплошной / края дороги</span>
+    <span class="card-value v-yellow">3 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Видимость дороги менее (опасный поворот)</span>
+    <span class="card-value v-red">100 м</span>
+  </div></div>
+
+  <div class="sub-heading">Запрет стоянки — дополнительно</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">До ж/д переезда</span>
+    <span class="card-value v-teal">50 м</span>
+  </div></div>
+
+  <div class="sub-heading">Определения</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Остановка — до</span>
+    <span class="card-value v-purple">5 мин</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Стоянка — более</span>
+    <span class="card-value v-purple">> 5 мин</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Граница ж/д переезда от рельса</span>
+    <span class="card-value v-purple">10 м</span>
+  </div></div>
+
+  <div class="tip">
+    <strong>Мнемоника:</strong> «5-15-30-50» — пешеход, остановка, перекрёсток, ж/д. Числа растут с «опасностью» объекта.
+  </div>
+</div>
+
+<!-- ═══════════════ ШТРАФЫ ═══════════════ -->
+<div class="section" id="fines">
+  <div class="section-title">💰 Штрафы 2026 (МРП = 4 325 ₸)</div>
+
+  <div class="sub-heading">Превышение скорости</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">На 10–20 км/ч</span>
+    <span class="card-value v-yellow">5 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">На 20–40 км/ч</span>
+    <span class="card-value v-yellow">10 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">На 40–60 км/ч</span>
+    <span class="card-value v-red">20 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Более 60 км/ч</span>
+    <span class="card-value v-red">40 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Повторное нарушение за год</span>
+    <span class="card-value v-red">30 МРП</span>
+  </div></div>
+
+  <div class="sub-heading">Другие частые штрафы</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Телефон за рулём</span>
+    <span class="card-value v-teal">5 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Непристёгнутый ремень</span>
+    <span class="card-value v-teal">5 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Нарушение знаков / разметки</span>
+    <span class="card-value v-teal">3 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Езда без прав</span>
+    <span class="card-value v-teal">5 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Проезд на красный</span>
+    <span class="card-value v-purple">10 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Создание аварийной обстановки</span>
+    <span class="card-value v-purple">10 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Непропуск пешехода</span>
+    <span class="card-value v-purple">10 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Нарушение правил обгона</span>
+    <span class="card-value v-pink">15 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Неисправные тормоза / руль</span>
+    <span class="card-value v-pink">15 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Переоборудование без разрешения</span>
+    <span class="card-value v-pink">15 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Нарушение на ж/д переезде</span>
+    <span class="card-value v-red">20 МРП</span>
+  </div></div>
+
+  <div class="sub-heading">Алкоголь 🍺</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Вождение в нетрезвом виде (>0.3‰)</span>
+    <span class="card-value v-red">200 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Алкотестер > 0.5‰</span>
+    <span class="card-value v-red">300 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Отказ от мед. освидетельствования</span>
+    <span class="card-value v-red">250 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Повторное за год</span>
+    <span class="card-value v-red">400 МРП</span>
+  </div></div>
+
+  <div class="sub-heading">Пешеходы</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Пешеход нарушил ПДД</span>
+    <span class="card-value v-teal">2 МРП</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Повторно</span>
+    <span class="card-value v-teal">10 МРП</span>
+  </div></div>
+
+  <div class="tip">
+    <strong>Ступенька скорости:</strong> 5 → 10 → 20 → 40 МРП. Каждый шаг удваивается. Скидка 50% при оплате за 7 дней!
+  </div>
+</div>
+
+<!-- ═══════════════ БУКСИРОВКА ═══════════════ -->
+<div class="section" id="tow">
+  <div class="section-title">🔗 Буксировка</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Гибкая сцепка — расстояние</span>
+    <span class="card-value v-yellow">4–6 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Жёсткая сцепка — не более</span>
+    <span class="card-value v-teal">4 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Макс. скорость буксировки</span>
+    <span class="card-value v-purple">50 км/ч</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Нельзя буксировать, если масса > чем</span>
+    <span class="card-value v-red">½ массы буксира</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Сколько ТС можно буксировать</span>
+    <span class="card-value v-red">Только 1</span>
+  </div></div>
+
+  <div class="tip">
+    <strong>Гибкая = 4-6.</strong> Жёсткая = до 4. Запрещено: неисправный руль, неисправные тормоза (если масса > ½ буксирующего), 2+ ТС одновременно.
+  </div>
+</div>
+
+<!-- ═══════════════ РАЗНОЕ ═══════════════ -->
+<div class="section" id="other">
+  <div class="section-title">📋 Прочие цифры</div>
+
+  <div class="sub-heading">Свет фар — переключение</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Переключить дальний на ближний при встречном ТС за</span>
+    <span class="card-value v-yellow">150 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Светоотражатель виден при ближнем свете</span>
+    <span class="card-value v-yellow">150 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Светоотражатель виден при дальнем свете</span>
+    <span class="card-value v-yellow">400 м</span>
+  </div></div>
+
+  <div class="sub-heading">Допуск и документы</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Экзамен: вопросов</span>
+    <span class="card-value v-teal">40</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Нужно правильных минимум</span>
+    <span class="card-value v-teal">32</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Время на экзамен</span>
+    <span class="card-value v-teal">40 мин</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Теория действует</span>
+    <span class="card-value v-purple">2 мес</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Пересдача через</span>
+    <span class="card-value v-purple">7 дней</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Госпошлина за ВУ</span>
+    <span class="card-value v-purple">1.25 МРП</span>
+  </div></div>
+
+  <div class="sub-heading">Велосипеды / мопеды</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Расстояние между группами для обгона</span>
+    <span class="card-value v-pink">80–100 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Груз может выступать максимум</span>
+    <span class="card-value v-pink">50 см</span>
+  </div></div>
+
+  <div class="sub-heading">Перестановка при знаках 3.29/3.30</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Время перестановки машин (чёт/нечёт)</span>
+    <span class="card-value v-yellow">19:00–21:00</span>
+  </div></div>
+
+  <div class="sub-heading">Установка предупреждающих знаков</div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">Вне населённого пункта</span>
+    <span class="card-value v-teal">150–300 м</span>
+  </div></div>
+
+  <div class="card"><div class="card-row">
+    <span class="card-label">В населённом пункте</span>
+    <span class="card-value v-teal">50–100 м</span>
+  </div></div>
+
+  <div class="tip">
+    <strong>Совет:</strong> если не уверен — выбирай самый «безопасный» ответ. ПДД всегда за осторожность.
+  </div>
+</div>
+
+<!-- ═══════════════ ЛАЙФХАКИ ═══════════════ -->
+<div class="section" id="tips">
+  <div class="section-title">💡 Как отвечать на тесте</div>
+
+  <div class="card">
+    <h3><span class="num">1</span> Правило «безопасного ответа»</h3>
+    <p>Если не знаешь — выбирай самый <span class="hl">осторожный</span> вариант: уступить дорогу, снизить скорость, остановиться, включить аварийку. Работает в 70-80% спорных вопросов.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> Длинный ответ ≈ правильный?</h3>
+    <p><span class="hl">Да, чаще всего работает!</span> Особенно в медицинских вопросах и вопросах по ДТП. Правильный ответ обычно самый подробный — он описывает полную последовательность действий. Короткие варианты часто неполные.</p>
+    <p style="margin-top:6px; color: var(--text-dim); font-size: 0.8rem;">⚠️ Но не слепо! Иногда короткий ответ правильный — «Запрещается», «Только прямо». Длинный ответ — подсказка, не гарантия.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> «Все ответы верны»</h3>
+    <p>Если видишь вариант <span class="hl">«Все перечисленные»</span> — он правильный примерно в <span class="hl-green">60-70%</span> случаев. Если каждый отдельный вариант выглядит логичным — скорее всего, верен обобщающий.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> Слова-маркеры</h3>
+    <ul>
+      <li><span class="hl-red">«Всегда», «Никогда», «Только», «В любом случае»</span> — часто неправильные (в ПДД почти всегда есть исключения)</li>
+      <li><span class="hl-green">«Как правило», «При необходимости»</span> — чаще правильные</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> Метод исключения</h3>
+    <p>Убери явно абсурдные варианты. Обычно 1-2 можно сразу отбросить. Из оставшихся — выбирай более безопасный.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">6</span> Не торопись!</h3>
+    <p><span class="hl">40 вопросов → 40 минут</span> = минута на вопрос. Читай ВСЕ варианты до конца. Часто ловят на невнимательности: ответы отличаются 1-2 словами.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">7</span> Пропускай сложные</h3>
+    <p>Вопрос вызывает ступор — <span class="hl">пропусти</span>, вернись в конце. Не трать 3-4 минуты на один вопрос.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">8</span> Картинки перекрёстков</h3>
+    <p>Алгоритм: <span class="hl">1)</span> Регулируемый или нет? → <span class="hl">2)</span> Кто на главной? → <span class="hl">3)</span> Помеха справа? Решает 90% вопросов по перекрёсткам.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Золотое правило:</strong> Нужно 32 из 40 — можно ошибиться 8 раз. Это щадящий порог. Не паникуй!
+  </div>
+
+  <div class="sub-heading">Тактика на экзамене</div>
+
+  <div class="card">
+    <h3>📋 Порядок прохождения</h3>
+    <div class="rule-row">
+      <span class="hl-green" style="font-weight:800; white-space:nowrap;">1 круг:</span>
+      <span class="rule-text">Ответь на все лёгкие, где уверен. Сомнительные — пропускай.</span>
+    </div>
+    <div class="rule-row">
+      <span class="hl-blue" style="font-weight:800; white-space:nowrap;">2 круг:</span>
+      <span class="rule-text">Вернись к пропущенным. Спокойно думай, метод исключения.</span>
+    </div>
+    <div class="rule-row">
+      <span class="hl-red" style="font-weight:800; white-space:nowrap;">3 круг:</span>
+      <span class="rule-text">Оставшиеся — ставь «безопасный» ответ. Пустых не оставляй!</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ МЕДИЦИНА ═══════════════ -->
+<div class="section" id="med">
+  <div class="section-title">🩺 Первая медицинская помощь</div>
+
+  <div class="tip">
+    <strong>Главный лайфхак:</strong> В медвопросах самый длинный и подробный ответ — почти всегда правильный.
+  </div>
+
+  <div class="sub-heading">Кровотечения — главная тема</div>
+
+  <div class="card">
+    <h3>🔴 Артериальное кровотечение</h3>
+    <table class="vs-table">
+      <tr><th>Признаки</th><th>Действия</th></tr>
+      <tr>
+        <td>Кровь <span class="hl-red">алая (яркая)</span>, бьёт <span class="hl-red">пульсирующей струёй</span></td>
+        <td><span class="hl">Жгут ВЫШЕ раны</span>. Записать время. Макс: 1 ч зимой, 2 ч летом</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>🔵 Венозное кровотечение</h3>
+    <table class="vs-table">
+      <tr><th>Признаки</th><th>Действия</th></tr>
+      <tr>
+        <td>Кровь <span class="hl-blue">тёмная</span>, вытекает <span class="hl-blue">ровной струёй</span></td>
+        <td><span class="hl">Давящая повязка</span> на рану. Жгут НЕ нужен</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="tip tip-green">
+    <strong>Мнемоника:</strong> «А = Алая = жгут выше» / «В = тёмная = повязка на»
+  </div>
+
+  <div class="sub-heading">Переломы</div>
+
+  <div class="card">
+    <h3>🦴 Закрытый перелом</h3>
+    <p>Кожа целая. <span class="hl">Наложить шины</span>, захватывая 2 соседних сустава. Без шин: руку согнуть в локте → на косынку → прибинтовать к телу. Ноги прибинтовать друг к другу, проложив мягкую ткань.</p>
+  </div>
+
+  <div class="card">
+    <h3>🩸 Открытый перелом</h3>
+    <p>Порядок: <span class="hl">1) Остановить кровотечение</span> → <span class="hl">2) Стерильная повязка</span> → <span class="hl">3) Шина</span> → 4) Транспортировка. Кость обратно <span class="hl-red">НЕ вправлять</span>!</p>
+  </div>
+
+  <div class="card">
+    <h3>🐸 «Поза лягушки»</h3>
+    <p>Согнутые разведённые ноги = подозрение на перелом таза/позвоночника. <span class="hl-red">Позу НЕ менять</span>, ноги НЕ вытягивать, шины НЕ накладывать. Валик под колени, холод на живот.</p>
+  </div>
+
+  <div class="sub-heading">Реанимация</div>
+
+  <div class="card">
+    <h3>💓 Сердечно-лёгочная реанимация</h3>
+    <ul>
+      <li>Когда: <span class="hl">нет пульса И нет дыхания</span></li>
+      <li>Соотношение: <span class="hl">30 нажатий : 2 вдоха</span></li>
+      <li>Глубина: <span class="hl">5-6 см</span></li>
+      <li>Частота: <span class="hl">100-120 раз/мин</span></li>
+      <li>Руки — в замок, на <span class="hl">середину грудины</span></li>
+    </ul>
+  </div>
+
+  <div class="sub-heading">Другие частые вопросы</div>
+
+  <div class="card">
+    <h3>🤕 Травма головы</h3>
+    <p>Давящая повязка. Потеря сознания → <span class="hl">боковое положение</span>. Холод к голове. Рвота → голову набок.</p>
+  </div>
+
+  <div class="card">
+    <h3>🔥 Ожог</h3>
+    <p>Проточная вода <span class="hl">15-20 минут</span>. Пузыри <span class="hl-red">НЕ вскрывать</span>. Мази <span class="hl-red">НЕ наносить</span>. Стерильная повязка.</p>
+  </div>
+
+  <div class="card">
+    <h3>🫁 Инородное тело в дых. путях</h3>
+    <p><span class="hl">Удары ладонью по спине</span> (между лопатками). Не помогло → приём Геймлиха (толчки в живот выше пупка).</p>
+  </div>
+
+  <div class="card">
+    <h3>🚗 Когда извлекать из машины?</h3>
+    <p>Только если: <span class="hl-red">нет признаков жизни</span> или <span class="hl-red">угроза возгорания</span>. Иначе — ждать скорую.</p>
+  </div>
+
+  <div class="card">
+    <h3>📞 Что сообщить при вызове 103</h3>
+    <p>Место ДТП → кол-во пострадавших → пол, возраст → сознание, дыхание, кровотечение, переломы → <span class="hl">дождаться подтверждения</span> диспетчера.</p>
+  </div>
+
+  <div class="tip tip-red">
+    <strong>Топ ошибок:</strong> Путают артериальное с венозным. Жгут — ВЫШЕ раны, не ниже. «Позу лягушки» не менять. Сначала кровотечение, потом шины.
+  </div>
+</div>
+
+<!-- ═══════════════ ЗНАКИ ═══════════════ -->
+<div class="section" id="signs">
+  <div class="section-title">🚧 Дорожные знаки ПДД РК</div>
+
+  <div class="tip">
+    <strong>7 групп знаков.</strong> Запомни форму и цвет — сможешь угадать смысл даже незнакомого.
+  </div>
+
+  <div class="sub-heading">7 групп — как отличить по виду</div>
+
+  <div class="sign-grid">
+    <div class="sign-card">
+      <span class="sign-icon">⚠️</span>
+      <h4 style="color: var(--accent);">1. Предупреждающие</h4>
+      <p>Треугольник, белый фон, красная кайма. Предупреждают — ничего не запрещают!</p>
+    </div>
+    <div class="sign-card">
+      <span class="sign-icon">🛑</span>
+      <h4 style="color: var(--red);">2. Приоритета</h4>
+      <p>Разные формы: жёлтый ромб, перевёрнутый треугольник, СТОП-восьмиугольник</p>
+    </div>
+    <div class="sign-card">
+      <span class="sign-icon">⛔</span>
+      <h4 style="color: var(--red);">3. Запрещающие</h4>
+      <p>Круг, белый фон, красная кайма. Запрещают действие</p>
+    </div>
+    <div class="sign-card">
+      <span class="sign-icon">➡️</span>
+      <h4 style="color: var(--blue);">4. Предписывающие</h4>
+      <p>Круг, синий фон. Обязательное направление / действие</p>
+    </div>
+    <div class="sign-card">
+      <span class="sign-icon">ℹ️</span>
+      <h4 style="color: var(--blue);">5. Информационные</h4>
+      <p>Прямоугольник, синий/зелёный фон. Полосы, населённые пункты</p>
+    </div>
+    <div class="sign-card">
+      <span class="sign-icon">⛽</span>
+      <h4 style="color: var(--blue);">6. Сервиса</h4>
+      <p>Прямоугольник, синий с белым. АЗС, еда, больница, гостиница</p>
+    </div>
+    <div class="sign-card" style="grid-column: 1 / -1;">
+      <span class="sign-icon">🏷️</span>
+      <h4 style="color: var(--text-dim);">7. Таблички</h4>
+      <p>Маленькие прямоугольники, белый фон. Крепятся ПОД основным знаком — уточняют его</p>
+    </div>
+  </div>
+
+  <div class="sub-heading">Знаки, на которых ловят</div>
+
+  <div class="card">
+    <h3 style="color: var(--accent);">🏘️ Населённый пункт: белый vs синий</h3>
+    <p><span class="hl">Белый фон</span> → ты В населённом пункте → 60 км/ч.<br>
+    <span class="hl-blue">Синий фон</span> → проезжаешь МИМО → скорость НЕ снижается.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color: var(--red);">🚫 «Кирпич» vs «Движение запрещено»</h3>
+    <p><span class="hl-red">Кирпич (3.1)</span> = проезд запрещён ВСЕМ. На встречную.<br>
+    <span class="hl-red">Круг с красной каймой (3.2)</span> = запрещено, НО можно жителям, инвалидам, почте.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color: var(--red);">🅿️ 3.27 / 3.28 / 3.29 / 3.30</h3>
+    <table class="vs-table">
+      <tr><th>Знак</th><th>Значение</th><th>Вид</th></tr>
+      <tr><td>3.27</td><td>Остановка запрещена</td><td>Синий круг, красный X</td></tr>
+      <tr><td>3.28</td><td>Стоянка запрещена</td><td>Синий круг, 1 полоса</td></tr>
+      <tr><td>3.29</td><td>Стоянка запрещ. по нечётным</td><td>+ римская I</td></tr>
+      <tr><td>3.30</td><td>Стоянка запрещ. по чётным</td><td>+ римская II</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="color: var(--blue);">🔵 Предписывающие — направления</h3>
+    <p><span class="hl">Важно:</span> знак «только налево» (4.1.3) <span class="hl-green">разрешает и разворот</span>! А «только направо» — нет.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color: var(--purple);">🔄 Зона действия запрещающих знаков</h3>
+    <ul>
+      <li>До ближайшего перекрёстка</li>
+      <li>До знака конца населённого пункта</li>
+      <li>До знака «Конец зоны всех ограничений» (3.31)</li>
+      <li>До таблички с расстоянием</li>
+    </ul>
+    <p style="margin-top:6px; font-size: 0.8rem; color: var(--text-dim);">Выезд из двора — НЕ перекрёсток, запрет продолжает действовать!</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color: var(--orange);">🟡 Временные знаки (жёлтый фон)</h3>
+    <p>Временный противоречит постоянному → <span class="hl">подчиняйся ВРЕМЕННОМУ</span>. Оранжевая разметка важнее белой.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Приоритеты:</strong> 1️⃣ Регулировщик > 2️⃣ Светофор > 3️⃣ Временные знаки > 4️⃣ Постоянные знаки > 5️⃣ Разметка
+  </div>
+
+  <div class="sub-heading">Регулировщик</div>
+
+  <div class="card">
+    <h3>🤚 3 положения</h3>
+    <ul>
+      <li><span class="hl">Руки вниз / в стороны:</span> от левого и правого бока — прямо и направо. От груди и спины — стоп</li>
+      <li><span class="hl">Правая рука вперёд:</span> от левого бока — во все стороны. От груди — только направо. От правого бока и спины — стоп</li>
+      <li><span class="hl">Рука вверх:</span> всем стоп (≈ жёлтый сигнал)</li>
+    </ul>
+  </div>
+
+  <div class="tip tip-green">
+    <strong>Мнемоника:</strong> «Грудь и спина — стена». Никогда не ехать на грудь или спину регулировщика.
+  </div>
+</div>
+
+</div><!-- /sections -->
+
+<div class="footer">
+  32 из 40 — и права твои. Ты справишься! 🍀
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
